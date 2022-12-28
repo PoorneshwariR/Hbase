@@ -1,0 +1,31 @@
+sqoop import \
+--connect "jdbc:mysql://quickstart.cloudera:3306/retail_db" \
+--username root \
+--password cloudera \
+--table orders \
+--warehouse-dir /user/Poorni/Project1
+
+
+sqoop import \
+--connect "jdbc:mysql://quickstart.cloudera:3306/retail_db" \
+--username root \
+--password cloudera \
+--table customers \
+--warehouse-dir /user/Poorni/Project1
+
+sqoop create-hive-table \
+--connect "jdbc:mysql://quickstart.cloudera:3306/retail_db" \
+--username root \
+--password cloudera \
+--table orders \
+--hive-table orders \
+--fields-terminated-by ','
+
+
+sqoop create-hive-table \
+--connect "jdbc:mysql://quickstart.cloudera:3306/retail_db" \
+--username root \
+--password cloudera \
+--table customers \
+--hive-table customers \
+--fields-terminated-by ','
